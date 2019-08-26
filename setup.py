@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name="DataFlame",
+    name="dataflame",
     version="1.0.0-beta",
     description="DataFlame: Machine-Learning Oriented Dataframe Manipulation Interface for Pandas Dataframes",
     url="https://github.com/shayanfazeli/dataflame",
