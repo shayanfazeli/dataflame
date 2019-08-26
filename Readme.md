@@ -10,4 +10,4 @@ applying ramps and/or other functionalities that are usually
 required in machine learning tasks that have to do
 with dataframes as their inputs.
 
-To read the documentation, please visit [here](https://dataflame.github.io).
+To read the documentation, please visit [here](https://cs.ucla.edu/~shayan/docs/dataflame).
