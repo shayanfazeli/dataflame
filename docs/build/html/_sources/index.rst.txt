@@ -1,0 +1,20 @@
+Welcome to DataFlame's documentation!
+=====================================
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   api/dataflame.interpolation
+   api/dataflame.label_based_dataframe_alteration
+   api/dataflame.label_reformatting
+   api/dataflame
+   api/modules
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

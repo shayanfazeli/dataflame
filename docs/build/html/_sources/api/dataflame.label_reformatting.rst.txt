@@ -1,0 +1,22 @@
+dataflame.label\_reformatting package
+=====================================
+
+Submodules
+----------
+
+dataflame.label\_reformatting.utilities module
+----------------------------------------------
+
+.. automodule:: dataflame.label_reformatting.utilities
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: dataflame.label_reformatting
+   :members:
+   :undoc-members:
+   :show-inheritance:

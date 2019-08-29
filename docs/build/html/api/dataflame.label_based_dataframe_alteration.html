@@ -1,0 +1,372 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <title>dataflame.label_based_dataframe_alteration package &#8212; DataFlame 1.0.2b documentation</title>
+
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-4.3.1-dist/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinxbootstrap4.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/sphinxbootstrap4.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="dataflame.label_reformatting package" href="dataflame.label_reformatting.html" />
+    <link rel="prev" title="dataflame.interpolation package" href="dataflame.interpolation.html" /> 
+  </head><body>
+  <nav class="navbar navbar-expand-md  fixed-top navbar-dark bg-inverse flex-wrap">
+    <button class="navbar-toggler ml-auto py-2" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
+      &#9776;
+    </button>
+      <div class="navbar-collapse collapse" id="exCollapsingNavbar2">
+           <a class="navbar-brand py-1" href="../index.html">
+                  DataFlame
+          </a>
+          <ul class="navbar-nav mr-auto">
+          
+              <li class="nav-item dropdown d-none d-sm-block" id="navbar-pages">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                  <ul class="dropdown-menu">
+                  <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="dataflame.interpolation.html">dataflame.interpolation package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dataflame.interpolation.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataflame.interpolation.html#module-dataflame.interpolation.utilities">dataflame.interpolation.utilities module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataflame.interpolation.html#module-dataflame.interpolation">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">dataflame.label_based_dataframe_alteration package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-dataflame.label_based_dataframe_alteration.utilities">dataflame.label_based_dataframe_alteration.utilities module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-dataflame.label_based_dataframe_alteration">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dataflame.label_reformatting.html">dataflame.label_reformatting package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dataflame.label_reformatting.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataflame.label_reformatting.html#module-dataflame.label_reformatting.utilities">dataflame.label_reformatting.utilities module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataflame.label_reformatting.html#module-dataflame.label_reformatting">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="dataflame.html">dataflame package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="dataflame.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="dataflame.interpolation.html">dataflame.interpolation package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dataflame.interpolation.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dataflame.interpolation.html#module-dataflame.interpolation.utilities">dataflame.interpolation.utilities module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dataflame.interpolation.html#module-dataflame.interpolation">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">dataflame.label_based_dataframe_alteration package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-dataflame.label_based_dataframe_alteration.utilities">dataflame.label_based_dataframe_alteration.utilities module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-dataflame.label_based_dataframe_alteration">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dataflame.label_reformatting.html">dataflame.label_reformatting package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dataflame.label_reformatting.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dataflame.label_reformatting.html#module-dataflame.label_reformatting.utilities">dataflame.label_reformatting.utilities module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dataflame.label_reformatting.html#module-dataflame.label_reformatting">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dataflame.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataflame.html#module-dataflame.version">dataflame.version module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataflame.html#module-dataflame">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">dataflame</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="dataflame.html">dataflame package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="dataflame.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="dataflame.interpolation.html">dataflame.interpolation package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">dataflame.label_based_dataframe_alteration package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dataflame.label_reformatting.html">dataflame.label_reformatting package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dataflame.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dataflame.html#module-dataflame.version">dataflame.version module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dataflame.html#module-dataflame">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                  </ul>
+              </li>
+              <li class="nav-item">
+              <a  class="nav-link" href="../index.html">Home</a></li>
+              <li class="nav-item">
+              
+                  <a  class="nav-link" href="http://example.com">Link</a></li>
+          </ul>
+          <div class="dropdown-divider d-block d-sm-none mb-4"></div>
+             
+<form class="form-inline" action="../search.html" method="get">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+      </div>
+
+      <!--<div class="row hidden-sm-up">
+          <div class="collapse navbar-toggleable-xs container" id="exCollapsingNavbar2">
+              <div class="container">
+             　　 <a class="navbar-brand" href="../index.html">
+                      DataFlame
+                  </a>
+              </div>
+              <ul class="nav navbar-nav">
+                  <li>
+                  <a  class="nav-link" href="../index.html">Home</a></li>
+                  <li>
+                  
+                      <a  class="nav-link" href="http://example.com">Link</a></li>
+              </ul>
+              <div class="dropdown-divider"></div>
+              <div class="navbar-text">search<div>
+              
+<form class="form-inline" action="../search.html" method="get">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          </div>
+      </div>-->
+    </nav>
+  </div>
+
+    <div class="related d-flex justify-content-between bg-light flex-wrap" role="navigation" aria-label="related navigation">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="../index.html">DataFlame 1.0.2b documentation</a></li>
+            <li class="breadcrumb-item active">dataflame.label_based_dataframe_alteration package</li>
+        </ol>
+       <div>
+          <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+               <a href="dataflame.interpolation.html" title="Previous Chapter: dataflame.interpolation package" class="btn btn-primary" role="botton" accesskey="P">
+                   &laquo; dataflame.int...
+               </a>
+               <a href="dataflame.label_reformatting.html" title="Next Chapter: dataflame.label_reformatting package" class="btn btn-primary" role="botton" accesskey="N">
+                   dataflame.lab... &raquo;
+               </a>
+           </div>
+       </div>
+    </div>
+
+  <div class="main container-fluid">
+    <div class="row"> 
+      <div class="sphinxsidebar d-none d-md-block">
+        <div class="sphinxsidebarwrapper">          
+            <h4>Table Of Contents</h4>
+            
+            
+              <div class="sidebartoctree">
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="dataflame.interpolation.html">dataflame.interpolation package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dataflame.interpolation.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataflame.interpolation.html#module-dataflame.interpolation.utilities">dataflame.interpolation.utilities module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataflame.interpolation.html#module-dataflame.interpolation">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">dataflame.label_based_dataframe_alteration package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-dataflame.label_based_dataframe_alteration.utilities">dataflame.label_based_dataframe_alteration.utilities module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-dataflame.label_based_dataframe_alteration">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dataflame.label_reformatting.html">dataflame.label_reformatting package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dataflame.label_reformatting.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataflame.label_reformatting.html#module-dataflame.label_reformatting.utilities">dataflame.label_reformatting.utilities module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataflame.label_reformatting.html#module-dataflame.label_reformatting">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="dataflame.html">dataflame package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="dataflame.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="dataflame.interpolation.html">dataflame.interpolation package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dataflame.interpolation.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dataflame.interpolation.html#module-dataflame.interpolation.utilities">dataflame.interpolation.utilities module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dataflame.interpolation.html#module-dataflame.interpolation">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">dataflame.label_based_dataframe_alteration package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-dataflame.label_based_dataframe_alteration.utilities">dataflame.label_based_dataframe_alteration.utilities module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-dataflame.label_based_dataframe_alteration">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dataflame.label_reformatting.html">dataflame.label_reformatting package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dataflame.label_reformatting.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dataflame.label_reformatting.html#module-dataflame.label_reformatting.utilities">dataflame.label_reformatting.utilities module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dataflame.label_reformatting.html#module-dataflame.label_reformatting">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dataflame.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataflame.html#module-dataflame.version">dataflame.version module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataflame.html#module-dataflame">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">dataflame</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="dataflame.html">dataflame package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="dataflame.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="dataflame.interpolation.html">dataflame.interpolation package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">dataflame.label_based_dataframe_alteration package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dataflame.label_reformatting.html">dataflame.label_reformatting package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dataflame.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dataflame.html#module-dataflame.version">dataflame.version module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dataflame.html#module-dataflame">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            
+          
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dataflame.interpolation.html"
+                        title="previous chapter">dataflame.interpolation package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dataflame.label_reformatting.html"
+                        title="next chapter">dataflame.label_reformatting package</a></p>
+<div id="searchbox" style="display: none">
+    <form class="form search" action="../search.html" method="get">
+      <input type="text" name="q" class="form-control" placeholder="Search..." />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <ul class="this-page-menu list-unstyled text-right">
+    <li><a href="../_sources/api/dataflame.label_based_dataframe_alteration.rst.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+        </div>
+      </div> 
+
+      <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="dataflame-label-based-dataframe-alteration-package">
+<h1>dataflame.label_based_dataframe_alteration package<a class="headerlink" href="#dataflame-label-based-dataframe-alteration-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-dataflame.label_based_dataframe_alteration.utilities">
+<span id="dataflame-label-based-dataframe-alteration-utilities-module"></span><h2>dataflame.label_based_dataframe_alteration.utilities module<a class="headerlink" href="#module-dataflame.label_based_dataframe_alteration.utilities" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="dataflame.label_based_dataframe_alteration.utilities.balance_dataframe_by_label_column">
+<code class="sig-prename descclassname">dataflame.label_based_dataframe_alteration.utilities.</code><code class="sig-name descname">balance_dataframe_by_label_column</code><span class="sig-paren">(</span><em class="sig-param">dataframe: pandas.core.frame.DataFrame</em>, <em class="sig-param">label_column: str</em>, <em class="sig-param">sample_count_per_category: Optional[int] = 1000</em>, <em class="sig-param">shuffle: bool = True</em>, <em class="sig-param">list_of_accepted_outputs: List[str] = None</em>, <em class="sig-param">consider_this_number_of_frequent_labels_only: int = None</em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="headerlink" href="#dataflame.label_based_dataframe_alteration.utilities.balance_dataframe_by_label_column" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method balances the dataframe by label column</p>
+<dl class="simple">
+<dt>dataframe: <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>, required</dt><dd><p>The data frame of our examples (assuming that we are working with a dataset in
+which examples an fit into RAM).</p>
+</dd>
+<dt>label_column: <code class="docutils literal notranslate"><span class="pre">str</span></code>, required</dt><dd><p>The title of the column of categories is inserted as this variable.</p>
+</dd>
+<dt>sample_count_per_category: <code class="docutils literal notranslate"><span class="pre">Optional[int]</span></code>, optional (default=1000)</dt><dd><p>In the output dataset, we have this number of examples in each category. Set this to None
+to use the maximum occurrences as this value.</p>
+</dd>
+<dt>shuffle: <code class="docutils literal notranslate"><span class="pre">bool</span></code>, optional (default=`True`)</dt><dd><p>The value of this variable determines whether or not do you want to shuffle the dataframe</p>
+</dd>
+<dt>list_of_accepted_outputs: <code class="docutils literal notranslate"><span class="pre">List[str]</span></code>, optional (default=`None`)</dt><dd><p>In case only a certain set of labels is to be accepted, they will be given to this.</p>
+</dd>
+</dl>
+<p>consider_this_number_of_frequent_labels_only: <code class="docutils literal notranslate"><span class="pre">int</span></code>, optional (default=`None`)</p>
+<p>The output of this method is the now balanced dataframe.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataflame.label_based_dataframe_alteration.utilities.binary_label_regression_for_prediction">
+<code class="sig-prename descclassname">dataflame.label_based_dataframe_alteration.utilities.</code><code class="sig-name descname">binary_label_regression_for_prediction</code><span class="sig-paren">(</span><em class="sig-param">dataframe: pandas.core.frame.DataFrame</em>, <em class="sig-param">label_column: str</em>, <em class="sig-param">timestamp_column: str</em>, <em class="sig-param">anticipation_time_window: float</em>, <em class="sig-param">id_column: str</em>, <em class="sig-param">number_of_classes: int = 2</em>, <em class="sig-param">label_to_assume_if_not_a_number: int = 0</em><span class="sig-paren">)</span><a class="headerlink" href="#dataflame.label_based_dataframe_alteration.utilities.binary_label_regression_for_prediction" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is best used whenever we have the following problem:
+We are planning to use a sequence of feature vectors through time to predict a binary label (in case of multi-label, use one-vs-all approach to make it binary).
+This function helps with smoothing the slope from 0.0 (no tag present) to 1.0 (tag is detected).</p>
+<dl class="simple">
+<dt>dataframe: <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>, required</dt><dd><p>This function works with a <code class="docutils literal notranslate"><span class="pre">pandas.dataframe</span></code>.</p>
+</dd>
+<dt>label_column: <code class="docutils literal notranslate"><span class="pre">str</span></code>, required</dt><dd><p>The column for the labels (can include <cite>0</cite>, <cite>1</cite>, or <cite>nan</cite> as its values)</p>
+</dd>
+<dt>timestamp_column: <code class="docutils literal notranslate"><span class="pre">str</span></code>, required</dt><dd><p>The timestamp column which can include int values or float values</p>
+</dd>
+<dt>anticipation_time_window: <code class="docutils literal notranslate"><span class="pre">float</span></code>, required,</dt><dd><p>The time window of anticipation, must be in the same unit as the timestamp column in the df dataframe.</p>
+</dd>
+<dt>id_column: <code class="docutils literal notranslate"><span class="pre">str</span></code>, required</dt><dd><p>In case of a machine learning dataset (like if we want to separate them by <code class="docutils literal notranslate"><span class="pre">patient_id</span></code>) this column is used
+to differentiate in terms of interpolation between those.</p>
+</dd>
+<dt>number_of_classes: <code class="docutils literal notranslate"><span class="pre">int</span></code>, optional (default=2)</dt><dd><p>The number of unique labels that you want in the end (the original is binary, and say based on
+your ramp you think you want <cite>5</cite>, then set this to <cite>5</cite>).</p>
+</dd>
+<dt>label_to_assume_if_not_a_number: <code class="docutils literal notranslate"><span class="pre">int</span></code>, optional (default=0)</dt><dd><p>Fill the not a number labels in the end with this value</p>
+</dd>
+</dl>
+<p>The output of this is the dataframe with the label (which was previously a binary value) being regressed
+and then quantized using a ramp, and now has values 0 to <cite>n</cite> accordingly.</p>
+<p><cite>Remark: if you want a certain timewindow to be 1 too, use twice the timewindow and set the number of classes to 2.</cite></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataflame.label_based_dataframe_alteration.utilities.regress_to_class">
+<code class="sig-prename descclassname">dataflame.label_based_dataframe_alteration.utilities.</code><code class="sig-name descname">regress_to_class</code><span class="sig-paren">(</span><em class="sig-param">current_timestamp: int</em>, <em class="sig-param">one_timestamp: int</em>, <em class="sig-param">anticipation_time_window: float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#dataflame.label_based_dataframe_alteration.utilities.regress_to_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function checks every timestamp against the timestamp of a class occurrence, and assigns a weight on it.
+Linear interpolation of the label column is what this function does, providing us with a “ramp” instead of having a
+step transition from 0 to 1.
+Parameters
+———-
+current_timestamp: <code class="docutils literal notranslate"><span class="pre">int</span></code>, required</p>
+<blockquote>
+<div><p>The timestamp of the current row</p>
+</div></blockquote>
+<dl class="simple">
+<dt>one_timestamp: <code class="docutils literal notranslate"><span class="pre">int</span></code>, required,</dt><dd><p>The timestamp to the <cite>1</cite> in the label class that we want to check the current timestamps against.</p>
+</dd>
+<dt>anticipation_time_window: <code class="docutils literal notranslate"><span class="pre">float</span></code>, required</dt><dd><p>This parameter determines how “wide” our ramps should be.</p>
+</dd>
+</dl>
+<p>The output of this method is a float which represents the value of the ramp.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-dataflame.label_based_dataframe_alteration">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-dataflame.label_based_dataframe_alteration" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="clearer"></div>
+      </div>
+    </div>
+<footer class="footer d-flex justify-content-between flex-wrap">
+    <div class="copyright">
+        <div>&copy; Copyright 2019, Shayan Fazeli.</div>
+      <div>Generated by <a href="http://sphinx.pocoo.org/">Sphinx</a> 2.2.0 using <a href="https://github.com/myyasuda/sphinxbootstrap4theme">sphinxbootstrap4theme</a> 0.6.0.</div>
+    </div>
+    <div>
+        <a href="#" class="btn btn-primary btn-sm" role="botton">Back to top</a>
+    </div>
+</footer>
+  </body>
+</html>

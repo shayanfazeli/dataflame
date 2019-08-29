@@ -1,0 +1,22 @@
+dataflame.label\_based\_dataframe\_alteration package
+=====================================================
+
+Submodules
+----------
+
+dataflame.label\_based\_dataframe\_alteration.utilities module
+--------------------------------------------------------------
+
+.. automodule:: dataflame.label_based_dataframe_alteration.utilities
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: dataflame.label_based_dataframe_alteration
+   :members:
+   :undoc-members:
+   :show-inheritance:

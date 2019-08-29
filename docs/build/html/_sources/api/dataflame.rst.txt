@@ -1,0 +1,31 @@
+dataflame package
+=================
+
+Subpackages
+-----------
+
+.. toctree::
+
+   dataflame.interpolation
+   dataflame.label_based_dataframe_alteration
+   dataflame.label_reformatting
+
+Submodules
+----------
+
+dataflame.version module
+------------------------
+
+.. automodule:: dataflame.version
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: dataflame
+   :members:
+   :undoc-members:
+   :show-inheritance:
