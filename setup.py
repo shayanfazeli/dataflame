@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="dataflame",
-    version="1.0.2-beta",
+    version="1.0.3-beta",
     description="DataFlame: Machine-Learning Oriented Dataframe Manipulation Interface for Pandas Dataframes",
     url="https://github.com/shayanfazeli/dataflame",
     author="Shayan Fazeli",

@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     
-    <title>dataflame.label_based_dataframe_alteration package &#8212; DataFlame 1.0.2b documentation</title>
+    <title>dataflame.label_based_dataframe_alteration package &#8212; DataFlame 1.0.3b documentation</title>
 
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -149,7 +149,7 @@
 
     <div class="related d-flex justify-content-between bg-light flex-wrap" role="navigation" aria-label="related navigation">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="../index.html">DataFlame 1.0.2b documentation</a></li>
+            <li class="breadcrumb-item"><a href="../index.html">DataFlame 1.0.3b documentation</a></li>
             <li class="breadcrumb-item active">dataflame.label_based_dataframe_alteration package</li>
         </ol>
        <div>
@@ -325,6 +325,70 @@ and then quantized using a ramp, and now has values 0 to <cite>n</cite> accordin
 </dd></dl>
 
 <dl class="function">
+<dt id="dataflame.label_based_dataframe_alteration.utilities.enforce_not_found_policy">
+<code class="sig-prename descclassname">dataflame.label_based_dataframe_alteration.utilities.</code><code class="sig-name descname">enforce_not_found_policy</code><span class="sig-paren">(</span><em class="sig-param">dataframe: pandas.core.frame.DataFrame</em>, <em class="sig-param">label_column: str</em>, <em class="sig-param">not_found_policy: str</em>, <em class="sig-param">acceptable_labels: List[Any] = None</em>, <em class="sig-param">default_label_to_replace_unknown: Any = None</em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="headerlink" href="#dataflame.label_based_dataframe_alteration.utilities.enforce_not_found_policy" title="Permalink to this definition">¶</a></dt>
+<dd><p>To enforce the “not_found_policy” on a dataframe, the <a class="reference internal" href="#dataflame.label_based_dataframe_alteration.utilities.enforce_not_found_policy" title="dataflame.label_based_dataframe_alteration.utilities.enforce_not_found_policy"><code class="xref py py-func docutils literal notranslate"><span class="pre">enforce_not_found_policy()</span></code></a> can be used.</p>
+<dl class="simple">
+<dt>dataframe: <cite>pandas.DataFrame</cite>, required</dt><dd><p>The input dataframe shall be passed via this variable.</p>
+</dd>
+<dt>label_column: <cite>str</cite>, required</dt><dd><p>This variable will indicate the name of the label column.</p>
+</dd>
+<dt>not_found_policy: <cite>str</cite>, required</dt><dd><p>The policy for dealing with labels that are not in the list: <cite>exception</cite>, <cite>ignore</cite>, or <cite>default</cite>.</p>
+</dd>
+<dt>acceptable_labels: <cite>List[Any]</cite>, optional (default=None)</dt><dd><p>This is similar to the mapping labels, we will check anything which is not part of it
+if it is left as <cite>None</cite> we will deal with <a href="#id1"><span class="problematic" id="id2">`</span></a>nan`s.</p>
+</dd>
+<dt>default_label_to_replace_unknown: <cite>Any</cite>, optional (default=None)</dt><dd><p>The default value for the labels to be replaced with, which is mainly useful for problems
+such as positive-unlabeled classification.</p>
+</dd>
+</dl>
+<p>The altered output which is an instance of <cite>pandas.DataFrame</cite> will be returned as the output of
+this method.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataflame.label_based_dataframe_alteration.utilities.form_mapping_using_dictionary">
+<code class="sig-prename descclassname">dataflame.label_based_dataframe_alteration.utilities.</code><code class="sig-name descname">form_mapping_using_dictionary</code><span class="sig-paren">(</span><em class="sig-param">label_bundles: Dict[Any, List[Any]]</em><span class="sig-paren">)</span> &#x2192; Dict[Any, Any]<a class="headerlink" href="#dataflame.label_based_dataframe_alteration.utilities.form_mapping_using_dictionary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forming a mapping using a dictionary can take place by using this function.</p>
+<p>label_bundles: the bundles, like: “parent”: [“child1”, “child2”, … ]</p>
+<p>The output which is a mapping of type <cite>Dict[Any, Any]</cite> can be used as <cite>f[x]=y</cite> later on.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataflame.label_based_dataframe_alteration.utilities.keep_these_labels_only">
+<code class="sig-prename descclassname">dataflame.label_based_dataframe_alteration.utilities.</code><code class="sig-name descname">keep_these_labels_only</code><span class="sig-paren">(</span><em class="sig-param">dataframe: pandas.core.frame.DataFrame, label_column: str, labels_to_keep: List[Any]</em><span class="sig-paren">)</span><a class="headerlink" href="#dataflame.label_based_dataframe_alteration.utilities.keep_these_labels_only" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>dataframe: <cite>pandas.DataFrame</cite>, required</dt><dd><p>The input dataframe</p>
+</dd>
+<dt>label_column: <cite>str</cite>, required</dt><dd><p>The name of the labels column</p>
+</dd>
+<dt>labels_to_keep: <cite>List[Any]</cite>, required</dt><dd><p>The list of the acceptable labels, the rest we will ignore</p>
+</dd>
+</dl>
+<p>The <cite>pandas.DataFrame</cite> with the unknown labeled rows dropped will be returned.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataflame.label_based_dataframe_alteration.utilities.map_the_labels">
+<code class="sig-prename descclassname">dataflame.label_based_dataframe_alteration.utilities.</code><code class="sig-name descname">map_the_labels</code><span class="sig-paren">(</span><em class="sig-param">dataframe: pandas.core.frame.DataFrame, label_column: str, mapping: Dict[Any, Any], not_found_policy: str = 'exception', default_label_to_replace_unknown: Any = None</em><span class="sig-paren">)</span> &#x2192; pandas.core.frame.DataFrame<a class="headerlink" href="#dataflame.label_based_dataframe_alteration.utilities.map_the_labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assume that you have a mapping, for example, the ICD9 hierarchy, and you want to apply a KNOWN mapping on all the
+labels. This function does that for you.</p>
+<dl class="simple">
+<dt>dataframe: <cite>pandas.DataFrame</cite>, required</dt><dd><p>The pandas dataframe which you are using as the data will be fed to this method as the input.</p>
+</dd>
+<dt>label_column: <cite>str</cite>, required</dt><dd><p>The name of the column of labels</p>
+</dd>
+<dt>mapping: <cite>Dict[Any, Any]</cite>, required</dt><dd><p>A dictionary in which you input the raw class and output is the mapped label</p>
+</dd>
+<dt>not_found_policy: <cite>str</cite>, optional (default=’exception`)</dt><dd><p>The choices for this parameter are <cite>exception</cite> (which raises an exception in case a label does not comply</p>
+</dd>
+</dl>
+<p>or is not found in the mapping), <cite>ignore</cite> (to remove the rows with the label not in the mapping), <cite>default</cite> (which
+assigns a default label to those, like an additional <cite>UNK</cite> label.</p>
+<p>The altered version of the input dataframe will be returned which is an instance of <cite>pandas.DataFrame</cite>.</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="dataflame.label_based_dataframe_alteration.utilities.regress_to_class">
 <code class="sig-prename descclassname">dataflame.label_based_dataframe_alteration.utilities.</code><code class="sig-name descname">regress_to_class</code><span class="sig-paren">(</span><em class="sig-param">current_timestamp: int</em>, <em class="sig-param">one_timestamp: int</em>, <em class="sig-param">anticipation_time_window: float</em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#dataflame.label_based_dataframe_alteration.utilities.regress_to_class" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function checks every timestamp against the timestamp of a class occurrence, and assigns a weight on it.
@@ -359,14 +423,7 @@ current_timestamp: <code class="docutils literal notranslate"><span class="pre">
       <div class="clearer"></div>
       </div>
     </div>
-<footer class="footer d-flex justify-content-between flex-wrap">
-    <div class="copyright">
-        <div>&copy; Copyright 2019, Shayan Fazeli.</div>
-      <div>Generated by <a href="http://sphinx.pocoo.org/">Sphinx</a> 2.2.0 using <a href="https://github.com/myyasuda/sphinxbootstrap4theme">sphinxbootstrap4theme</a> 0.6.0.</div>
-    </div>
-    <div>
-        <a href="#" class="btn btn-primary btn-sm" role="botton">Back to top</a>
-    </div>
-</footer>
+
+
   </body>
 </html>

@@ -12,7 +12,7 @@ __credit__ = 'erLab - University of California, Los Angeles'
 """
 
 # libraries
-from typing import List, Optional
+from typing import List, Optional, Any, Dict
 
 import pandas
 import numpy
@@ -229,3 +229,177 @@ def balance_dataframe_by_label_column(
 
     # it is ready now, and will be returned.
     return output_dataframe
+
+
+def enforce_not_found_policy(
+        dataframe: pandas.DataFrame,
+        label_column: str,
+        not_found_policy: str,
+        acceptable_labels: List[Any] = None,
+        default_label_to_replace_unknown: Any = None
+) -> pandas.DataFrame:
+    """
+    To enforce the "not_found_policy" on a dataframe, the :func:`enforce_not_found_policy` can be used.
+
+    Parameters
+    ----------
+    dataframe: `pandas.DataFrame`, required
+        The input dataframe shall be passed via this variable.
+    label_column: `str`, required
+        This variable will indicate the name of the label column.
+    not_found_policy: `str`, required
+        The policy for dealing with labels that are not in the list: `exception`, `ignore`, or `default`.
+    acceptable_labels: `List[Any]`, optional (default=None)
+        This is similar to the mapping labels, we will check anything which is not part of it
+        if it is left as `None` we will deal with `nan`s.
+    default_label_to_replace_unknown: `Any`, optional (default=None)
+        The default value for the labels to be replaced with, which is mainly useful for problems
+        such as positive-unlabeled classification.
+
+    Returns
+    ----------
+    The altered output which is an instance of `pandas.DataFrame` will be returned as the output of
+    this method.
+    """
+    # sanity check
+    if default_label_to_replace_unknown is not None:
+        assert not_found_policy == 'default', "Why have you set a default label when you are not planning to use it?"
+
+    # checking and enforcing the not_found_policy setting
+    if not_found_policy == 'ignore':
+        if acceptable_labels is not None:
+            dataframe = dataframe.loc[dataframe[label_column].isin(acceptable_labels), :]
+        else:
+            dataframe = dataframe.loc[~dataframe[label_column].isna(), :]
+    elif not_found_policy == 'exception':
+        original_labels = dataframe[label_column].unique().tolist()
+        for original_label in original_labels:
+            if acceptable_labels is not None:
+                assert original_label in acceptable_labels, "Exception: there are labels not covered by your mapping."
+            else:
+                assert not pandas.isna(original_label), "Exception: not a number value encountered"
+    elif not_found_policy == 'default':
+        assert default_label_to_replace_unknown is not None, "where is the default label?"
+        assert default_label_to_replace_unknown in acceptable_labels, "why don't you accept the default label as accepted label?"
+
+        if acceptable_labels is not None:
+            mapping_function = lambda x: x if x in acceptable_labels else default_label_to_replace_unknown
+        else:
+            mapping_function = lambda x: default_label_to_replace_unknown if pandas.isna(x) else x
+
+        dataframe[label_column] = dataframe[label_column].apply(mapping_function)
+    else:
+        raise Exception("Unknown policy for not found labels")
+
+    return dataframe
+
+
+def map_the_labels(
+        dataframe: pandas.DataFrame,
+        label_column: str,
+        mapping: Dict[Any, Any],
+        not_found_policy: str = 'exception',
+        default_label_to_replace_unknown: Any = None
+) -> pandas.DataFrame:
+    """
+    Assume that you have a mapping, for example, the ICD9 hierarchy, and you want to apply a KNOWN mapping on all the
+    labels. This function does that for you.
+
+    Parameters
+    ----------
+    dataframe: `pandas.DataFrame`, required
+        The pandas dataframe which you are using as the data will be fed to this method as the input.
+    label_column: `str`, required
+        The name of the column of labels
+    mapping: `Dict[Any, Any]`, required
+        A dictionary in which you input the raw class and output is the mapped label
+    not_found_policy: `str`, optional (default='exception`)
+        The choices for this parameter are `exception` (which raises an exception in case a label does not comply
+    or is not found in the mapping), `ignore` (to remove the rows with the label not in the mapping), `default` (which
+    assigns a default label to those, like an additional `UNK` label.
+
+    Returns
+    ----------
+    The altered version of the input dataframe will be returned which is an instance of `pandas.DataFrame`.
+    """
+
+    # getting the domain of our mapping function
+    mapping_domain = list(mapping.keys())
+
+    if default_label_to_replace_unknown is not None:
+        if default_label_to_replace_unknown in mapping_domain:
+            assert default_label_to_replace_unknown == mapping[default_label_to_replace_unknown], "the default value" \
+                                                                                                 "should be in the mapping" \
+                                                                                                 "and mapping should map it" \
+                                                                                                 "to itself"
+        else:
+            mapping_domain[default_label_to_replace_unknown] = default_label_to_replace_unknown
+
+    dataframe = enforce_not_found_policy(
+        dataframe=dataframe,
+        label_column=label_column,
+        acceptable_labels=mapping_domain,
+        default_label_to_replace_unknown=default_label_to_replace_unknown,
+        not_found_policy=not_found_policy
+    )
+
+    # performing the mappings will take place by applying the local function defined below
+    def map_to_output(x: Any, mapping: Dict[Any, Any]) -> Any:
+        try:
+            return mapping[x]
+        except:
+            if not_found_policy == 'default':
+                return default_label_to_replace_unknown
+            else:
+                raise Exception("Unknown problem, attention needed.")
+
+    # there is no in-place application, so, here is the solution:
+    dataframe[label_column] = dataframe[label_column].apply(lambda x: map_to_output(x, mapping=mapping))
+
+    # returning the altered dataframe
+    return dataframe
+
+
+def keep_these_labels_only(
+        dataframe: pandas.DataFrame,
+        label_column: str,
+        labels_to_keep: List[Any]
+):
+    """
+    Parameters
+    ----------
+    dataframe: `pandas.DataFrame`, required
+        The input dataframe
+    label_column: `str`, required
+        The name of the labels column
+    labels_to_keep: `List[Any]`, required
+        The list of the acceptable labels, the rest we will ignore
+
+    Returns
+    ----------
+    The `pandas.DataFrame` with the unknown labeled rows dropped will be returned.
+    """
+    return enforce_not_found_policy(
+        dataframe=dataframe,
+        not_found_policy='ignore',
+        label_column=label_column,
+        acceptable_labels=labels_to_keep
+    )
+
+
+def form_mapping_using_dictionary(label_bundles: Dict[Any, List[Any]]) -> Dict[Any, Any]:
+    """
+    Forming a mapping using a dictionary can take place by using this function.
+    
+    label_bundles: the bundles, like: "parent": ["child1", "child2", ... ]
+    
+    Returns
+    ----------
+    The output which is a mapping of type `Dict[Any, Any]` can be used as `f[x]=y` later on.
+    """
+    mapping = dict()
+    for target, list_of_labels in label_bundles.items():
+        for label in list_of_labels:
+            mapping[label] = target
+        mapping[target] = target
+    return mapping
