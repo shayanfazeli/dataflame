@@ -8,6 +8,7 @@ Welcome to DataFlame's documentation!
    api/dataflame.interpolation
    api/dataflame.label_based_dataframe_alteration
    api/dataflame.label_reformatting
+   api/dataflame.statistics.rst
    api/dataflame
    api/modules
 
