@@ -41,6 +41,8 @@ def compute_correlations_in_dataframe(
         correlation_labels = correlations_dataframe.columns.tolist()
         if take_care_of_nans:
             correlations_matrix = numpy.nan_to_num(correlations_dataframe.to_numpy())
+        else:
+            correlations_matrix = correlations_dataframe.to_numpy()
         return correlations_matrix, correlation_labels
     elif return_type == 'dataframe':
         if take_care_of_nans:
